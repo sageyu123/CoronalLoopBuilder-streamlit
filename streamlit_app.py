@@ -69,11 +69,11 @@ for midx, dummy_map in enumerate(dummy_maps):
     dummy_map.draw_grid(axes=ax, grid_spacing=10 * u.deg, color='k')
     dummy_map.draw_limb(axes=ax, color='k')
 
-coronal_loop = CoronalLoopBuilder(
-    fig, axs, dummy_maps,
-    radius=radius * u.Mm, height=height * u.Mm, phi0=phi0 * u.deg, theta0=theta0 * u.deg,
-    el=el * u.deg, az=az * u.deg, samples_num=samples_num
-)
+# coronal_loop = CoronalLoopBuilder(
+#     fig, axs, dummy_maps,
+#     radius=radius * u.Mm, height=height * u.Mm, phi0=phi0 * u.deg, theta0=theta0 * u.deg,
+#     el=el * u.deg, az=az * u.deg, samples_num=samples_num
+# )
 
 # Convert plot to image and display in Streamlit
 buf = io.BytesIO()
