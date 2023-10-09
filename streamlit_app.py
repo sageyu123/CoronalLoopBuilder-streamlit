@@ -28,13 +28,31 @@ time_now = Time.now()
 # The following dummy map creation is repetitive for the two maps, could be functionized for brevity
 data1 = np.ones((10, 10))
 meta1 = MetaDict({
-    # ... (metadata as in the example script for the first map)
+    'ctype1': 'HPLN-TAN', 'ctype2': 'HPLT-TAN',
+    'cunit1': 'arcsec', 'cunit2': 'arcsec',
+    'crpix1': (data1.shape[0] + 1) / 2., 'crpix2': (data1.shape[1] + 1) / 2.,
+    'cdelt1': 1.0, 'cdelt2': 1.0, 'crval1': 0.0, 'crval2': 0.0,
+    'hgln_obs': 0.0,  ## Stonyhurst heliographic longitude in degree
+    'hglt_obs': 0.0,  ## Stonyhurst heliographic latitude in degree
+    'dsun_obs': const.au.to(u.m).value, 'dsun_ref': const.au.to(u.m).value,
+    'rsun_ref': const.R_sun.to(u.m).value,
+    'rsun_obs': ((const.R_sun / const.au).decompose() * u.radian).to(u.arcsec).value,
+    't_obs': time_now.iso, 'date-obs': time_now.iso,
 })
 dummy_map1 = smap.GenericMap(data1, meta1)
 
 data2 = np.ones((10, 10))
 meta2 = MetaDict({
-    # ... (metadata as in the example script for the second map)
+    'ctype1': 'HPLN-TAN', 'ctype2': 'HPLT-TAN',
+    'cunit1': 'arcsec', 'cunit2': 'arcsec',
+    'crpix1': (data2.shape[0] + 1) / 2., 'crpix2': (data2.shape[1] + 1) / 2.,
+    'cdelt1': 1.0, 'cdelt2': 1.0, 'crval1': 0.0, 'crval2': 0.0,
+    'hgln_obs': 106.0,  ## Stonyhurst heliographic longitude in degree
+    'hglt_obs': 5.0,  ## Stonyhurst heliographic latitude in degree
+    'dsun_obs': const.au.to(u.m).value, 'dsun_ref': const.au.to(u.m).value,
+    'rsun_ref': const.R_sun.to(u.m).value,
+    'rsun_obs': 2 * ((const.R_sun / const.au).decompose() * u.radian).to(u.arcsec).value,
+    't_obs': time_now.iso, 'date-obs': time_now.iso,
 })
 dummy_map2 = smap.GenericMap(data2, meta2)
 
